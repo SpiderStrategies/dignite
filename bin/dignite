@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+/*!
+ * dignite: a node.js websocket to send data to dash custom push widgets
+ * Copyright(c) 2015 Spider Strategies, Inc <nathan@spiderstrategies.com>
+ * ISC Licensed
+ */
+var rc = require('rc')
+  , endpoint = rc('dignite').url
+  , WebSocket = require('ws')
+  , url = require('url')
+  , path = require('path')
+  , push = 'wss://push.thedash.com'
+
+if (!endpoint) {
+  throw new Error('dignite requires the dash widget\'s push url.')
+}
+
+var pathname = url.parse(endpoint).pathname
+  , ws = new WebSocket(push + path.resolve('/', pathname))
+
+ws.on('open', function () {
+  process.stdin.on('data', function (d) {
+    ws.send(d.toString())
+  })
+})
+
+ws.on('close', function () {
+  process.exit()
+})
+
+ws.on('error', function (code, description) {
+  console.error('error: ' + code + (description || ''))
+  process.exit(-1)
+})

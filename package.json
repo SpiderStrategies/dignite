@@ -1,0 +1,28 @@
+{
+  "name": "dignite",
+  "version": "1.0.0",
+  "description": "Sends data to dash custom widgets.",
+  "bin": {
+    "dignite": "./bin/cmd"
+  },
+  "dependencies": {
+    "rc": "^0.6.0",
+    "ws": "^0.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SpiderStrategies/dignite"
+  },
+  "keywords": [
+    "dash",
+    "socket",
+    "push",
+    "dashboards"
+  ],
+  "author": "Nathan Bowser <nathan@spiderstrategies.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SpiderStrategies/dignite/issues"
+  },
+  "homepage": "https://github.com/SpiderStrategies/dignite"
+}
