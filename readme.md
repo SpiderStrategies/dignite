@@ -21,7 +21,7 @@ $ dignite_url=<widget push url> dignite
 
 Or a command line arg
 ```
-$ dignite url <widget push url>
+$ dignite --url <widget push url>
 ```
 
 Or throw a config file in `$HOME/.digniterc`
