@@ -7,17 +7,14 @@
  */
 var rc = require('rc')
   , endpoint = rc('dignite').url
-  , WebSocket = require('ws')
+  , dignite = require('../')
   , url = require('url')
-  , path = require('path')
-  , push = 'wss://push.thedash.com'
 
 if (!endpoint) {
   throw new Error('dignite requires the dash widget\'s push url.')
 }
 
-var pathname = url.parse(endpoint).pathname
-  , ws = new WebSocket(push + path.resolve('/', pathname))
+var ws = dignite(url.parse(endpoint).pathname)
 
 ws.on('open', function () {
   process.stdin.on('data', function (d) {
